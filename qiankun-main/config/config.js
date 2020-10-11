@@ -108,14 +108,6 @@ export default defineConfig({
     basePath: '/',
   },
   qiankun: {
-    master: {
-      // 注册子应用信息
-      apps: [
-        {
-          name: 'app1', // 唯一 id
-          entry: '//localhost:8001', // html entry
-        },
-      ],
-    },
+    master: {}
   },
 });
