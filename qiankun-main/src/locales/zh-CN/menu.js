@@ -49,5 +49,7 @@ export default {
   'menu.editor.flow': '流程编辑器',
   'menu.editor.mind': '脑图编辑器',
   'menu.editor.koni': '拓扑编辑器',
+  'menu.app': '子应用',
+  'menu.app.app1': '子应用1',
   'menu.app1': '子应用1',
 };

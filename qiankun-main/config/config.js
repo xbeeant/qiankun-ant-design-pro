@@ -79,7 +79,6 @@ export default defineConfig({
             {
               path: '/app1',
               name: 'app1',
-              microApp: 'app1'
             },
             {
               component: './404',

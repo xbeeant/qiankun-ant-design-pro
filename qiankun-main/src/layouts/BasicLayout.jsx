@@ -5,13 +5,14 @@
  */
 import ProLayout, { DefaultFooter } from '@ant-design/pro-layout';
 import React, { useEffect, useMemo, useRef } from 'react';
-import { Link, useIntl, connect, history } from 'umi';
+import { Link, useIntl, connect, history, MicroApp } from 'umi';
 import { GithubOutlined } from '@ant-design/icons';
 import { Result, Button } from 'antd';
 import Authorized from '@/utils/Authorized';
 import RightContent from '@/components/GlobalHeader/RightContent';
 import { getMatchMenu } from '@umijs/route-utils';
-import logo from '../assets/logo.svg';
+import logo from '../assets/logo.svg';///
+
 const noMatch = (
   <Result
     status={403}
@@ -101,6 +102,16 @@ const BasicLayout = (props) => {
     [location.pathname],
   );
   const { formatMessage } = useIntl();
+
+  const getAppName = () => {
+    const idx = location.pathname.indexOf("/");
+    const appName = location.pathname.substr(idx + 1);
+    const sidx = appName.indexOf("/");
+    if (sidx >= 0) {
+      return appName.substr(0, sidx);
+    }
+    return appName;
+  }
   return (
     <ProLayout
       logo={logo}
@@ -142,7 +153,7 @@ const BasicLayout = (props) => {
       {...settings}
     >
       <Authorized authority={authorized.authority} noMatch={noMatch}>
-        {children}
+        {location.pathname.substr(0, 4) === "/app" ? <MicroApp name={getAppName()} /> : children}
       </Authorized>
     </ProLayout>
   );
